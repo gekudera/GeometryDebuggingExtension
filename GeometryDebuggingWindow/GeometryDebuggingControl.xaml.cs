@@ -102,22 +102,22 @@ namespace GeometryDebuggingWindow
 
         private void OpenGeomViewWindow()
         {
-            if (!is_gv_inited)
+            try
             {
-                try
+                if (!is_gv_inited)
                 {
                     is_gv_inited = true;
                     InitGeomView("D:\\LOGOS work\\geom_toy\\visualized\\output_serializestring.txt");
                 }
-                catch (Exception e)
+                else
                 {
-                    //MessageBox.Show("geom view was closed");
+                    MessageBox.Show("reload");
+                    ReloadGeomView();
                 }
             }
-            else
+            catch (Exception e)
             {
-                MessageBox.Show("reload");
-                ReloadGeomView();
+                //some problems with open gv
             }
         }
 
@@ -171,13 +171,11 @@ namespace GeometryDebuggingWindow
         {
             if (IsVisible)
             {
-                MyData.Clear();
-                if (GetLocalValues() == true)
-                    Grid.ItemsSource = MyData;
+                ReloadDataGrid();
+                checkbox1.IsChecked = false;
             }
             else
             {
-                MessageBox.Show("Window was close");
                 _autoDraw = false;
             }
         }
@@ -189,21 +187,20 @@ namespace GeometryDebuggingWindow
 
             if (reason == dbgEventReason.dbgEventReasonStep || reason == dbgEventReason.dbgEventReasonBreakpoint)
             {
+                //не успевает обновляться параметр селектед
                 Dispatcher.BeginInvoke(new Action(() => GoFullDrawProcess()));
             }
         }
 
         public GeometryDebuggingControl()
         {
+            this.InitializeComponent();
             MyData = new ObservableCollection<MySampleData>();
-            MyData.Clear();
             shmem = new SharedMemory();
             util = new Util();
             is_gv_inited = false;
             dte = Microsoft.VisualStudio.Shell.Package.GetGlobalService(typeof(Microsoft.VisualStudio.Shell.Interop.SDTE)) as EnvDTE.DTE;
-            if (GetLocalValues() == true)
-                Grid.ItemsSource = MyData;
-            this.InitializeComponent();
+            ReloadDataGrid();
 
             // Подписка на событие закрытия
             IsVisibleChanged += (a, b) => CloseEventHandler();
@@ -227,16 +224,33 @@ namespace GeometryDebuggingWindow
             CreateDebuggingRemoteThread();
         }
 
+        private void GoManualDrawProcess()
+        {
+            MyData.Clear();
+            MySampleData item = new MySampleData();
+            item.Name = textBox1.Text;
+
+            var exp = dte.Debugger.GetExpression("&"+item.Name);
+            item.Address = exp.Value;
+            exp = dte.Debugger.GetExpression(item.Name);
+            item.Type = exp.Type;
+            item.Selected = false;
+
+            MyData.Add(item);
+            Grid.ItemsSource = MyData;
+        }
+
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            GoFullDrawProcess();
+            if (textBox1.Text == "")
+                GoFullDrawProcess();
+            else
+                GoManualDrawProcess(); 
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-            MyData.Clear();
-            if (GetLocalValues() == true)
-                Grid.ItemsSource = MyData;
+            ReloadDataGrid();
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -247,6 +261,23 @@ namespace GeometryDebuggingWindow
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             _autoDraw = false;
+        }
+
+        private void ReloadDataGrid()
+        {
+            MyData.Clear();
+            if (GetLocalValues() == true)
+                Grid.ItemsSource = MyData;
+        }
+
+        void OnChecked(object sender, RoutedEventArgs e)
+        {
+            MyData[Grid.SelectedIndex].Selected = true;
+        }
+
+        void OffChecked(object sender, RoutedEventArgs e)
+        {
+            MyData[Grid.SelectedIndex].Selected = false;
         }
     }
 }

@@ -21,6 +21,12 @@ namespace GeometryDebuggingWindow
     {
         public static MemoryMappedFile mmf;
         public static MemoryMappedViewStream mmfvs;
+        public static int count;
+
+        public SharedMemory()
+        {
+            count = 0;
+        }
 
         static public bool MemOpen()
         {
@@ -53,8 +59,12 @@ namespace GeometryDebuggingWindow
                 //запись сообщения с четвертого байта в разделяемой памяти
                 writer.WriteArray<char>(4, message, 0, message.Length);
             }
-            //System.Threading.Thread.Sleep(1000);
-            MessageBox.Show(data + " ! " + size);
+
+            if (count == 0)
+            {
+                 System.Threading.Thread.Sleep(3000);
+                 count++;
+            }
         }
 
         public string ReadFromMemory()

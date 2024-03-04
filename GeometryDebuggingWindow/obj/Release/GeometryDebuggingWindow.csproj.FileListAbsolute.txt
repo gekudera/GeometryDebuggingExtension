@@ -23,6 +23,3 @@ D:\LOGOS work\GeometryDebuggingWindow\GeometryDebuggingWindow\obj\Release\Geomet
 D:\LOGOS work\GeometryDebuggingWindow\GeometryDebuggingWindow\obj\Release\extension.vsixmanifest
 D:\LOGOS work\GeometryDebuggingWindow\GeometryDebuggingWindow\obj\Release\files.json
 D:\LOGOS work\GeometryDebuggingWindow\GeometryDebuggingWindow\obj\Release\createTemplateManifests.cache
-D:\LOGOS work\GeometryDebuggingWindow\GeometryDebuggingWindow\obj\Release\VSCT.read.1.tlog
-D:\LOGOS work\GeometryDebuggingWindow\GeometryDebuggingWindow\obj\Release\VSCT.write.1.tlog
-D:\LOGOS work\GeometryDebuggingWindow\GeometryDebuggingWindow\obj\Release\_EmptyResource.resources.original
