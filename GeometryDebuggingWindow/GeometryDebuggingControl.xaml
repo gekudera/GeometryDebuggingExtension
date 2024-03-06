@@ -5,20 +5,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:vsshell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
              mc:Ignorable="d" d:DesignWidth="300"
-             Name="MyToolWindow" Height="300">
-    <Grid Height="Auto" HorizontalAlignment="Stretch" Width="Auto" VerticalAlignment="Stretch" Margin="0,0,0,0">
+             Name="MyToolWindow" Height="315">
+    <Grid Height="Auto" HorizontalAlignment="Stretch" Width="Auto" VerticalAlignment="Top" Margin="0,0,0,0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="31*"/>
-            <RowDefinition Height="469*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="71*"/>
+            <RowDefinition Height="156*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Vertical" Margin="0,0,0,0" Width="Auto" Grid.ColumnSpan="6" Grid.RowSpan="2">
+        <StackPanel Orientation="Vertical" Grid.RowSpan="4" VerticalAlignment="Top" Height="326">
             <CheckBox x:Name="checkbox1" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">
-                <TextBlock Foreground="Gray">Draw objects automatically</TextBlock>
+                <TextBlock Foreground="Gray" VerticalAlignment="Top" HorizontalAlignment="Left">Draw objects automatically</TextBlock>
             </CheckBox>
-            <TextBox x:Name="textBox1" TextWrapping="Wrap" Text="" Width="120"/>
-            <Button Content="Draw objects" Click="button1_Click" Width="160" Height="23" x:Name="button1" Margin="50,10,50,10"/>
-            <Button x:Name="button2" Content="Refresh" Width="157" Margin="50,0,50,10" Click="button2_Click"/>
-            <DataGrid x:Name="Grid" Height="200" Width="Auto" ScrollViewer.CanContentScroll="True" 
+            <Label Margin ="10,0,0,0" Content="Enter your value name:" Foreground="#FFF1E9E9" Width="145" HorizontalAlignment="Left" VerticalAlignment="Top">
+            </Label>
+            <TextBox x:Name="textBox1" Margin ="10,0,10,10" TextWrapping="Wrap" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Button Content="Draw objects" Click="button1_Click" Width="160" Height="23" x:Name="button1" Margin="50,10,50,10" VerticalAlignment="Top"/>
+            <Button x:Name="button2" Content="Refresh" Width="157" Margin="50,0,50,10" Click="button2_Click" VerticalAlignment="Top"/>
+            <DataGrid x:Name="Grid" Height="164" Width="Auto" ScrollViewer.CanContentScroll="True" 
             ScrollViewer.VerticalScrollBarVisibility="Visible"
             ScrollViewer.HorizontalScrollBarVisibility="Visible"
             DataContext="{Binding Source=MyData}" AutoGenerateColumns="False">

@@ -62,7 +62,7 @@ namespace GeometryDebuggingWindow
 
             if (count == 0)
             {
-                 System.Threading.Thread.Sleep(3000);
+                 System.Threading.Thread.Sleep(4000);
                  count++;
             }
         }

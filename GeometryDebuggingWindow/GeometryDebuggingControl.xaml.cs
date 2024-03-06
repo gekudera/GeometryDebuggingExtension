@@ -16,6 +16,8 @@ using System.Globalization;
 using System.Threading;
 using System.Drawing;
 using Microsoft.VisualStudio.Threading;
+using System.IO;
+using System.Reflection;
 
 
 namespace GeometryDebuggingWindow
@@ -24,7 +26,6 @@ namespace GeometryDebuggingWindow
     {
         public string Name { get; set; }
         public string Type { get; set; }
-
         public string Address { get; set; }
         public bool Selected { get; set; }
     }
@@ -33,12 +34,13 @@ namespace GeometryDebuggingWindow
     {
         public ObservableCollection<MySampleData> MyData { get; }
         SharedMemory shmem { get; set; }
+
         Util util;
         bool is_gv_inited;
         private DebuggerEvents debuggerEvents;
         private DTE dte;
-
         private bool _autoDraw;
+        private static string path_to_dll;
 
 
         // Импорт сторонних функций
@@ -52,9 +54,9 @@ namespace GeometryDebuggingWindow
         [DllImport("kernel32.dll")]
         public static extern bool CloseHandle(IntPtr hObject);
 
-        [DllImport(@"D:\\LOGOS work\\GeometryDebuggingWindow\\x64\\Release\\GeomViewShell.dll")]
+        [DllImport("GeomViewShell.dll")]
         public static extern void InitGeomView(string b);
-        [DllImport(@"D:\\LOGOS work\\GeometryDebuggingWindow\\x64\\Release\\GeomViewShell.dll")]
+        [DllImport("GeomViewShell.dll")]
         public static extern void ReloadGeomView();
 
         [Flags]
@@ -79,19 +81,28 @@ namespace GeometryDebuggingWindow
             if (DTE.Debugger.CurrentThread == null) return false;
 
             EnvDTE.StackFrames stackFrames = DTE.Debugger.CurrentThread.StackFrames;
+            string address = "";
             //последние два стекфрейма выводят ненужные переменные
             for (int i = 1; i < stackFrames.Count - 3; i++)
             {
                 EnvDTE.Expressions expressions = stackFrames.Item(i).Locals;
                 foreach (EnvDTE.Expression exp in expressions)
                 {
-                    var e = DTE.Debugger.GetExpression("&" + exp.Name);
-                    //MessageBox.Show(exp.Name + "___" + e.Name + "____"+ e.Type + "_____" + e.Value);
+                    if (exp.Type.Contains("*") && exp.Value.StartsWith("0x"))
+                    {
+                        address = exp.Value.Split(' ')[0];
+                    }
+                    else
+                    {
+                        var e = DTE.Debugger.GetExpression("&" + exp.Name);
+                        address = e.Value;
+                    }
+                    
                     MyData.Add(new MySampleData
                     {
                         Name = exp.Name,
                         Type = exp.Type,
-                        Address = e.Value,
+                        Address = address,
                         Selected = false
                     });
                 }
@@ -107,7 +118,7 @@ namespace GeometryDebuggingWindow
                 if (!is_gv_inited)
                 {
                     is_gv_inited = true;
-                    InitGeomView("D:\\LOGOS work\\geom_toy\\visualized\\output_serializestring.txt");
+                    InitGeomView("//visualized//output_serializestring.txt");
                 }
                 else
                 {
@@ -194,6 +205,7 @@ namespace GeometryDebuggingWindow
 
         public GeometryDebuggingControl()
         {
+            //Инициализация полей
             this.InitializeComponent();
             MyData = new ObservableCollection<MySampleData>();
             shmem = new SharedMemory();
@@ -201,10 +213,9 @@ namespace GeometryDebuggingWindow
             is_gv_inited = false;
             dte = Microsoft.VisualStudio.Shell.Package.GetGlobalService(typeof(Microsoft.VisualStudio.Shell.Interop.SDTE)) as EnvDTE.DTE;
             ReloadDataGrid();
-
-            // Подписка на событие закрытия
+ 
+            // Подписка на события 
             IsVisibleChanged += (a, b) => CloseEventHandler();
-
             debuggerEvents = dte.Events.DebuggerEvents;
             debuggerEvents.OnEnterBreakMode += BreakHandler;
         }

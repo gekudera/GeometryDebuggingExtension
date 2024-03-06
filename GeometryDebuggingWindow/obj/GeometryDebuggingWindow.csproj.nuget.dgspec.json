@@ -31,7 +31,11 @@
         },
         "frameworks": {
           "net472": {
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\LOGOS work\\GeometryDebuggingWindow\\GeomViewShell\\GeomViewShell.vcxproj": {
+                "projectPath": "D:\\LOGOS work\\GeometryDebuggingWindow\\GeomViewShell\\GeomViewShell.vcxproj"
+              }
+            }
           }
         }
       },
@@ -63,6 +67,21 @@
         "win-x86": {
           "#import": []
         }
+      }
+    },
+    "D:\\LOGOS work\\GeometryDebuggingWindow\\GeomViewShell\\GeomViewShell.vcxproj": {
+      "restore": {
+        "projectUniqueName": "D:\\LOGOS work\\GeometryDebuggingWindow\\GeomViewShell\\GeomViewShell.vcxproj",
+        "projectName": "GeomViewShell",
+        "projectPath": "D:\\LOGOS work\\GeometryDebuggingWindow\\GeomViewShell\\GeomViewShell.vcxproj",
+        "frameworks": {
+          "native": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "native": {}
       }
     }
   }

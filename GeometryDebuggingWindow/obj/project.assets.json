@@ -2042,6 +2042,15 @@
             "related": ".xml"
           }
         }
+      },
+      "GeomViewShell/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/GeomViewShell.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GeomViewShell.dll": {}
+        }
       }
     },
     ".NETFramework,Version=v4.7.2/win": {
@@ -4073,6 +4082,15 @@
             "related": ".xml"
           }
         }
+      },
+      "GeomViewShell/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/GeomViewShell.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GeomViewShell.dll": {}
+        }
       }
     },
     ".NETFramework,Version=v4.7.2/win-arm64": {
@@ -6067,6 +6085,15 @@
           "lib/net472/_._": {
             "related": ".xml"
           }
+        }
+      },
+      "GeomViewShell/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/GeomViewShell.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GeomViewShell.dll": {}
         }
       }
     },
@@ -8099,6 +8126,15 @@
             "related": ".xml"
           }
         }
+      },
+      "GeomViewShell/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/GeomViewShell.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GeomViewShell.dll": {}
+        }
       }
     },
     ".NETFramework,Version=v4.7.2/win-x86": {
@@ -10129,6 +10165,15 @@
           "lib/net472/_._": {
             "related": ".xml"
           }
+        }
+      },
+      "GeomViewShell/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/GeomViewShell.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GeomViewShell.dll": {}
         }
       }
     }
@@ -13683,10 +13728,16 @@
         "vslangproj90.17.0.32112.339.nupkg.sha512",
         "vslangproj90.nuspec"
       ]
+    },
+    "GeomViewShell/1.0.0": {
+      "type": "project",
+      "path": "../GeomViewShell/GeomViewShell.vcxproj",
+      "msbuildProject": "../GeomViewShell/GeomViewShell.vcxproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.7.2": [
+      "GeomViewShell >= 1.0.0",
       "Microsoft.VSSDK.BuildTools >= 17.8.2365",
       "Microsoft.VisualStudio.SDK >= 17.0.32112.339"
     ]
@@ -13722,7 +13773,11 @@
       },
       "frameworks": {
         "net472": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\LOGOS work\\GeometryDebuggingWindow\\GeomViewShell\\GeomViewShell.vcxproj": {
+              "projectPath": "D:\\LOGOS work\\GeometryDebuggingWindow\\GeomViewShell\\GeomViewShell.vcxproj"
+            }
+          }
         }
       }
     },
