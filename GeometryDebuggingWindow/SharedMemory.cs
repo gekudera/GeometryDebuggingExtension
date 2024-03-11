@@ -12,6 +12,8 @@ using System.IO.MemoryMappedFiles;
 using System.Windows.Markup;
 using System.Windows.Controls;
 using Microsoft.VisualStudio.PlatformUI;
+using System.IO;
+using Microsoft.VisualStudio.Shell.Interop;
 
 
 namespace GeometryDebuggingWindow
@@ -19,20 +21,27 @@ namespace GeometryDebuggingWindow
 
     internal class SharedMemory
     {
-        public static MemoryMappedFile mmf;
-        public static MemoryMappedViewStream mmfvs;
-        public static int count;
+        public MemoryMappedFile mmf;
+        public MemoryMappedViewStream mmfvs;
+        public int count;
 
         public SharedMemory()
         {
             count = 0;
         }
 
-        static public bool MemOpen()
+        public void Dispose()
+        {
+            count = 0;
+            mmf?.Dispose();
+            mmfvs?.Dispose();
+        }
+
+        public bool MemOpen()
         {
             try
             {
-                mmf = MemoryMappedFile.OpenExisting("MySharedMemory");
+                mmf = MemoryMappedFile.OpenExisting("MySharedMemory2");
                 mmfvs = mmf.CreateViewStream();
                 return true;
             }
@@ -50,21 +59,20 @@ namespace GeometryDebuggingWindow
             //Размер введенного сообщения
             int size = message.Length;
 
-            MemoryMappedFile sharedMemory = MemoryMappedFile.CreateOrOpen("MySharedMemory", 2 * size + 4);
-            //Создаем объект для записи в разделяемый участок памяти
-
-            using (MemoryMappedViewAccessor writer = sharedMemory.CreateViewAccessor(0, 2 * size + 4))
+            if (mmf == null)
+                mmf = MemoryMappedFile.CreateOrOpen("MySharedMemory2", 2 * size + 4);
+            
+            using (MemoryMappedViewAccessor writer = mmf.CreateViewAccessor(0, 2 * size + 4))
             {
-                writer.Write(0, size);
-                //запись сообщения с четвертого байта в разделяемой памяти
-                writer.WriteArray<char>(4, message, 0, message.Length);
+                 writer.Write(0, size);
+                 writer.WriteArray<char>(4, message, 0, message.Length);
             }
-
-            if (count == 0)
-            {
-                 System.Threading.Thread.Sleep(4000);
-                 count++;
-            }
+            
+            //if (count == 0)
+            //{
+            //     System.Threading.Thread.Sleep(10000);
+            //     count++;
+            //}
         }
 
         public string ReadFromMemory()
@@ -75,11 +83,19 @@ namespace GeometryDebuggingWindow
                 {
                     byte[] blen = new byte[4];
                     mmfvs.Read(blen, 0, 4);
-                    int len = blen[0] + blen[1] * 256 + blen[2] * 65536 + blen[3] * 16777216;
+                    int len = blen[0] + blen[1] * 256 + blen[2] * 65536 + blen[3] * 16777216;                
 
                     if (len == 1)
                     {
-                        return len.ToString();
+                        // Read from the shared memory, just for this example we know there is a string
+                        BinaryReader reader = new BinaryReader(mmfvs);
+                        StringBuilder strb = new StringBuilder();
+                        string str;
+                        do
+                        {
+                            str = reader.ReadString();
+                        } while (!String.IsNullOrEmpty(str));
+                        return str;
                     }
                 }
                 System.Threading.Thread.Sleep(1000);

@@ -18,6 +18,7 @@ using System.Drawing;
 using Microsoft.VisualStudio.Threading;
 using System.IO;
 using System.Reflection;
+using System.Linq.Expressions;
 
 
 namespace GeometryDebuggingWindow
@@ -37,6 +38,7 @@ namespace GeometryDebuggingWindow
 
         Util util;
         bool is_gv_inited;
+        bool clear_;
         private DebuggerEvents debuggerEvents;
         private DTE dte;
         private bool _autoDraw;
@@ -113,12 +115,21 @@ namespace GeometryDebuggingWindow
 
         private void OpenGeomViewWindow()
         {
+            //EnvDTE.DTE DTE = Microsoft.VisualStudio.Shell.Package.GetGlobalService(typeof(SDTE)) as EnvDTE.DTE;
+            //string path = "";
+            //foreach (Project project in DTE.Solution)
+            //{
+            //    MessageBox.Show(project.Name + "  " + project.FullName + "    " + project.FileName);
+            //    path += project.Name + "\\";
+            //}
+            //MessageBox.Show("path " + path);
+
             try
             {
                 if (!is_gv_inited)
                 {
                     is_gv_inited = true;
-                    InitGeomView("//visualized//output_serializestring.txt");
+                    InitGeomView("visualized\\output_serializestring.txt");
                 }
                 else
                 {
@@ -188,6 +199,7 @@ namespace GeometryDebuggingWindow
             else
             {
                 _autoDraw = false;
+                shmem.Dispose();
             }
         }
 
@@ -211,6 +223,7 @@ namespace GeometryDebuggingWindow
             shmem = new SharedMemory();
             util = new Util();
             is_gv_inited = false;
+            clear_ = false;
             dte = Microsoft.VisualStudio.Shell.Package.GetGlobalService(typeof(Microsoft.VisualStudio.Shell.Interop.SDTE)) as EnvDTE.DTE;
             ReloadDataGrid();
  
@@ -235,9 +248,8 @@ namespace GeometryDebuggingWindow
             CreateDebuggingRemoteThread();
         }
 
-        private void GoManualDrawProcess()
+        private void AddNewItem()
         {
-            MyData.Clear();
             MySampleData item = new MySampleData();
             item.Name = textBox1.Text;
 
@@ -253,15 +265,12 @@ namespace GeometryDebuggingWindow
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            if (textBox1.Text == "")
-                GoFullDrawProcess();
-            else
-                GoManualDrawProcess(); 
+            GoFullDrawProcess();
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-            ReloadDataGrid();
+             ReloadDataGrid();
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -276,9 +285,11 @@ namespace GeometryDebuggingWindow
 
         private void ReloadDataGrid()
         {
+            clear_ = true;
             MyData.Clear();
             if (GetLocalValues() == true)
                 Grid.ItemsSource = MyData;
+            clear_ = false;
         }
 
         void OnChecked(object sender, RoutedEventArgs e)
@@ -288,7 +299,21 @@ namespace GeometryDebuggingWindow
 
         void OffChecked(object sender, RoutedEventArgs e)
         {
-            MyData[Grid.SelectedIndex].Selected = false;
+             if (!clear_)
+                MyData[Grid.SelectedIndex].Selected = false;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AddNewItem();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            clear_ = true;
+            MyData.Clear();
+            Grid.ItemsSource = MyData;
+            clear_ = false;
         }
     }
 }
