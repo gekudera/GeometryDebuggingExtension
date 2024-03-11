@@ -14,6 +14,7 @@ using System.Windows.Controls;
 using Microsoft.VisualStudio.PlatformUI;
 using System.IO;
 using Microsoft.VisualStudio.Shell.Interop;
+using EnvDTE;
 
 
 namespace GeometryDebuggingWindow
@@ -23,25 +24,19 @@ namespace GeometryDebuggingWindow
     {
         public MemoryMappedFile mmf;
         public MemoryMappedViewStream mmfvs;
-        public int count;
 
-        public SharedMemory()
-        {
-            count = 0;
-        }
 
         public void Dispose()
         {
-            count = 0;
-            mmf?.Dispose();
             mmfvs?.Dispose();
+            mmf?.Dispose();
         }
 
         public bool MemOpen()
         {
             try
             {
-                mmf = MemoryMappedFile.OpenExisting("MySharedMemory2");
+                mmf = MemoryMappedFile.OpenExisting("MySharedMemory");
                 mmfvs = mmf.CreateViewStream();
                 return true;
             }
@@ -60,19 +55,13 @@ namespace GeometryDebuggingWindow
             int size = message.Length;
 
             if (mmf == null)
-                mmf = MemoryMappedFile.CreateOrOpen("MySharedMemory2", 2 * size + 4);
+                mmf = MemoryMappedFile.CreateOrOpen("MySharedMemory", 2 * size + 4);
             
             using (MemoryMappedViewAccessor writer = mmf.CreateViewAccessor(0, 2 * size + 4))
             {
                  writer.Write(0, size);
                  writer.WriteArray<char>(4, message, 0, message.Length);
             }
-            
-            //if (count == 0)
-            //{
-            //     System.Threading.Thread.Sleep(10000);
-            //     count++;
-            //}
         }
 
         public string ReadFromMemory()
@@ -87,15 +76,11 @@ namespace GeometryDebuggingWindow
 
                     if (len == 1)
                     {
-                        // Read from the shared memory, just for this example we know there is a string
-                        BinaryReader reader = new BinaryReader(mmfvs);
-                        StringBuilder strb = new StringBuilder();
-                        string str;
-                        do
-                        {
-                            str = reader.ReadString();
-                        } while (!String.IsNullOrEmpty(str));
-                        return str;
+                        MemoryMappedViewAccessor viewAccessor = mmf.CreateViewAccessor();
+                        byte[] bytes = new byte[200];
+                        viewAccessor.ReadArray(4, bytes, 0, bytes.Length);
+                        string text = Encoding.UTF8.GetString(bytes);
+                        return text;
                     }
                 }
                 System.Threading.Thread.Sleep(1000);

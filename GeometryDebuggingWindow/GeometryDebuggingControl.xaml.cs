@@ -113,23 +113,16 @@ namespace GeometryDebuggingWindow
             return true;
         }
 
-        private void OpenGeomViewWindow()
+        private void OpenGeomViewWindow(string file_name)
         {
-            //EnvDTE.DTE DTE = Microsoft.VisualStudio.Shell.Package.GetGlobalService(typeof(SDTE)) as EnvDTE.DTE;
-            //string path = "";
-            //foreach (Project project in DTE.Solution)
-            //{
-            //    MessageBox.Show(project.Name + "  " + project.FullName + "    " + project.FileName);
-            //    path += project.Name + "\\";
-            //}
-            //MessageBox.Show("path " + path);
-
+            int pos = file_name.LastIndexOf('t');
+            file_name = file_name.Substring(0, pos+1);
             try
             {
                 if (!is_gv_inited)
                 {
                     is_gv_inited = true;
-                    InitGeomView("visualized\\output_serializestring.txt");
+                    InitGeomView(file_name);
                 }
                 else
                 {
@@ -169,7 +162,7 @@ namespace GeometryDebuggingWindow
             dte.Debugger.Go(false);
 
             //получение информации, что все завершилось from SharedMemory
-            string output = shmem.ReadFromMemory();
+            string file_name = shmem.ReadFromMemory();
 
             try
             {
@@ -186,7 +179,7 @@ namespace GeometryDebuggingWindow
                 MessageBox.Show("the process was break by closing window");
             }
 
-            OpenGeomViewWindow();   
+            OpenGeomViewWindow(file_name);   
         }
 
         private void CloseEventHandler()
