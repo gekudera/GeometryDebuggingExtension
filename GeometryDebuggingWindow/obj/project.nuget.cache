@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1zg8h4V22XobrY8adrr5kKPMWHSKTIOlameHBDs5D4+gEgnTgPj2C2BgMxUNIy9gVl1JFCQ104wZGOVwQdHqTA==",
+  "dgSpecHash": "9nWsF27M92vzhYbDoBVMZmSc+IZ1vYu/42273KM0UIUDD9nNQjALsuXjyE5USk7lwsZWoSOPG1wycqEXuvApcg==",
   "success": true,
-  "projectFilePath": "D:\\LOGOS work\\GeometryDebuggingWindow\\GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj",
+  "projectFilePath": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Anastasia\\.nuget\\packages\\envdte\\17.0.32112.339\\envdte.17.0.32112.339.nupkg.sha512",
     "C:\\Users\\Anastasia\\.nuget\\packages\\envdte100\\17.0.32112.339\\envdte100.17.0.32112.339.nupkg.sha512",

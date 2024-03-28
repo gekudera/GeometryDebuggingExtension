@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\LOGOS work\\GeometryDebuggingWindow\\GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj": {}
+    "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj": {}
   },
   "projects": {
-    "D:\\LOGOS work\\GeometryDebuggingWindow\\GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj": {
+    "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\LOGOS work\\GeometryDebuggingWindow\\GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj",
+        "projectUniqueName": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj",
         "projectName": "GeometryDebuggingWindow",
-        "projectPath": "D:\\LOGOS work\\GeometryDebuggingWindow\\GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj",
+        "projectPath": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj",
         "packagesPath": "C:\\Users\\Anastasia\\.nuget\\packages\\",
-        "outputPath": "D:\\LOGOS work\\GeometryDebuggingWindow\\GeometryDebuggingWindow\\obj\\",
+        "outputPath": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeometryDebuggingWindow\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -32,11 +32,16 @@
         "frameworks": {
           "net472": {
             "projectReferences": {
-              "D:\\LOGOS work\\GeometryDebuggingWindow\\GeomViewShell\\GeomViewShell.vcxproj": {
-                "projectPath": "D:\\LOGOS work\\GeometryDebuggingWindow\\GeomViewShell\\GeomViewShell.vcxproj"
+              "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeomViewShell\\GeomViewShell.vcxproj": {
+                "projectPath": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeomViewShell\\GeomViewShell.vcxproj"
               }
             }
           }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -69,11 +74,11 @@
         }
       }
     },
-    "D:\\LOGOS work\\GeometryDebuggingWindow\\GeomViewShell\\GeomViewShell.vcxproj": {
+    "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeomViewShell\\GeomViewShell.vcxproj": {
       "restore": {
-        "projectUniqueName": "D:\\LOGOS work\\GeometryDebuggingWindow\\GeomViewShell\\GeomViewShell.vcxproj",
+        "projectUniqueName": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeomViewShell\\GeomViewShell.vcxproj",
         "projectName": "GeomViewShell",
-        "projectPath": "D:\\LOGOS work\\GeometryDebuggingWindow\\GeomViewShell\\GeomViewShell.vcxproj",
+        "projectPath": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeomViewShell\\GeomViewShell.vcxproj",
         "frameworks": {
           "native": {
             "projectReferences": {}

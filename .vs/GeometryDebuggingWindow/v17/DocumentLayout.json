@@ -1,0 +1,81 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9D9E2F3E-5B05-43BA-8683-4F64CFDE806A}|GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj|D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\geometrydebuggingwindow\\geometrydebuggingcontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D9E2F3E-5B05-43BA-8683-4F64CFDE806A}|GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj|solutionrelative:geometrydebuggingwindow\\geometrydebuggingcontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D9E2F3E-5B05-43BA-8683-4F64CFDE806A}|GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj|d:\\logos work\\geometrydebuggingwindow_copy\\geometrydebuggingextension\\geometrydebuggingwindow\\sharedmemory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D9E2F3E-5B05-43BA-8683-4F64CFDE806A}|GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj|solutionrelative:geometrydebuggingwindow\\sharedmemory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D9E2F3E-5B05-43BA-8683-4F64CFDE806A}|GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj|D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\geometrydebuggingwindow\\geometrydebuggingcontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{9D9E2F3E-5B05-43BA-8683-4F64CFDE806A}|GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj|solutionrelative:geometrydebuggingwindow\\geometrydebuggingcontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SharedMemory.cs",
+              "DocumentMoniker": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeometryDebuggingWindow\\SharedMemory.cs",
+              "RelativeDocumentMoniker": "GeometryDebuggingWindow\\SharedMemory.cs",
+              "ToolTip": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeometryDebuggingWindow\\SharedMemory.cs",
+              "RelativeToolTip": "GeometryDebuggingWindow\\SharedMemory.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAowDgAAABHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-28T20:06:53.851Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GeometryDebuggingControl.xaml.cs",
+              "DocumentMoniker": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeometryDebuggingWindow\\GeometryDebuggingControl.xaml.cs",
+              "RelativeDocumentMoniker": "GeometryDebuggingWindow\\GeometryDebuggingControl.xaml.cs",
+              "ToolTip": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeometryDebuggingWindow\\GeometryDebuggingControl.xaml.cs",
+              "RelativeToolTip": "GeometryDebuggingWindow\\GeometryDebuggingControl.xaml.cs",
+              "ViewState": "AQIAAHEAAAAAAAAAAAAqwIAAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-28T20:06:54.614Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GeometryDebuggingControl.xaml",
+              "DocumentMoniker": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeometryDebuggingWindow\\GeometryDebuggingControl.xaml",
+              "RelativeDocumentMoniker": "GeometryDebuggingWindow\\GeometryDebuggingControl.xaml",
+              "ToolTip": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeometryDebuggingWindow\\GeometryDebuggingControl.xaml",
+              "RelativeToolTip": "GeometryDebuggingWindow\\GeometryDebuggingControl.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-03-28T20:06:54.627Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

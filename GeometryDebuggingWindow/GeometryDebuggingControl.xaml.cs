@@ -117,6 +117,7 @@ namespace GeometryDebuggingWindow
         {
             int pos = file_name.LastIndexOf('t');
             file_name = file_name.Substring(0, pos+1);
+            MessageBox.Show(file_name);
             try
             {
                 if (!is_gv_inited)
@@ -126,7 +127,6 @@ namespace GeometryDebuggingWindow
                 }
                 else
                 {
-                    MessageBox.Show("reload");
                     ReloadGeomView();
                 }
             }

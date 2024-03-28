@@ -54,7 +54,7 @@ namespace GeometryDebuggingWindow
             //Размер введенного сообщения
             int size = message.Length;
 
-            if (mmf == null)
+            if (mmf == null || mmf.SafeMemoryMappedFileHandle.IsClosed)
                 mmf = MemoryMappedFile.CreateOrOpen("MySharedMemory", 2 * size + 4);
             
             using (MemoryMappedViewAccessor writer = mmf.CreateViewAccessor(0, 2 * size + 4))
