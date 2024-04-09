@@ -31,14 +31,14 @@
                 </Button.RenderTransform>
             </Button>
             <Button Content="Draw objects" Click="button1_Click" Width="160" Height="23" x:Name="button1" Margin="50,10,50,10" VerticalAlignment="Top"/>
-            <Button x:Name="button2" Content="Refresh" Width="157" Margin="50,0,50,10" Click="button2_Click" VerticalAlignment="Top"/>
+            <Button x:Name="button2" Content="Get local values" Width="157" Margin="50,0,50,10" Click="button2_Click" VerticalAlignment="Top"/>
             <Button Content="Clear all" Height="20" Width="154" Click="Button_Click_1"/>
             <DataGrid x:Name="Grid" Height="116" Width="Auto" ScrollViewer.CanContentScroll="True" Margin="0, 10, 0, 0"
             ScrollViewer.VerticalScrollBarVisibility="Visible"
             ScrollViewer.HorizontalScrollBarVisibility="Visible"
             DataContext="{Binding Source=MyData}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>
                     <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Address" Binding="{Binding Path=Address}" CanUserSort="False" IsReadOnly="True"/>
                     <DataGridCheckBoxColumn Header="Selected" Binding="{Binding Path=Selected, Mode=TwoWay}">

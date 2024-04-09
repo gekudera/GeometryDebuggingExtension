@@ -19,6 +19,7 @@ using Microsoft.VisualStudio.Threading;
 using System.IO;
 using System.Reflection;
 using System.Linq.Expressions;
+using EnvDTE100;
 
 
 namespace GeometryDebuggingWindow
@@ -39,6 +40,7 @@ namespace GeometryDebuggingWindow
         Util util;
         bool is_gv_inited;
         bool clear_;
+        bool is_getlocalvalues_executed;
         private DebuggerEvents debuggerEvents;
         private DTE dte;
         private bool _autoDraw;
@@ -82,33 +84,34 @@ namespace GeometryDebuggingWindow
 
             if (DTE.Debugger.CurrentThread == null) return false;
 
-            EnvDTE.StackFrames stackFrames = DTE.Debugger.CurrentThread.StackFrames;
+            EnvDTE.StackFrame sf = DTE.Debugger.CurrentStackFrame;
             string address = "";
-            //последние два стекфрейма выводят ненужные переменные
-            for (int i = 1; i < stackFrames.Count - 3; i++)
-            {
-                EnvDTE.Expressions expressions = stackFrames.Item(i).Locals;
+
+            EnvDTE.Expressions expressions = sf.Locals;
                 foreach (EnvDTE.Expression exp in expressions)
                 {
-                    if (exp.Type.Contains("*") && exp.Value.StartsWith("0x"))
+                
+                if (exp.IsValidValue)
                     {
-                        address = exp.Value.Split(' ')[0];
+                        if (exp.Type.Contains("*") && exp.Value.StartsWith("0x"))
+                        {
+                            address = exp.Value.Split(' ')[0];
+                        }
+                        else
+                        {
+                            var e = DTE.Debugger.GetExpression("&" + exp.Name);
+                            address = e.Value;
+                        }
+
+                        MyData.Add(new MySampleData
+                        {
+                            Name = exp.Name,
+                            Type = exp.Type,
+                            Address = address,
+                            Selected = false
+                        });
                     }
-                    else
-                    {
-                        var e = DTE.Debugger.GetExpression("&" + exp.Name);
-                        address = e.Value;
-                    }
-                    
-                    MyData.Add(new MySampleData
-                    {
-                        Name = exp.Name,
-                        Type = exp.Type,
-                        Address = address,
-                        Selected = false
-                    });
                 }
-            }
 
             return true;
         }
@@ -117,11 +120,11 @@ namespace GeometryDebuggingWindow
         {
             int pos = file_name.LastIndexOf('t');
             file_name = file_name.Substring(0, pos+1);
-            MessageBox.Show(file_name);
             try
             {
                 if (!is_gv_inited)
                 {
+                    MessageBox.Show(file_name);
                     is_gv_inited = true;
                     InitGeomView(file_name);
                 }
@@ -217,8 +220,8 @@ namespace GeometryDebuggingWindow
             util = new Util();
             is_gv_inited = false;
             clear_ = false;
+            is_getlocalvalues_executed = false;
             dte = Microsoft.VisualStudio.Shell.Package.GetGlobalService(typeof(Microsoft.VisualStudio.Shell.Interop.SDTE)) as EnvDTE.DTE;
-            ReloadDataGrid();
  
             // Подписка на события 
             IsVisibleChanged += (a, b) => CloseEventHandler();
@@ -263,6 +266,7 @@ namespace GeometryDebuggingWindow
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
+            if (!is_getlocalvalues_executed)
              ReloadDataGrid();
         }
 
@@ -279,7 +283,12 @@ namespace GeometryDebuggingWindow
         private void ReloadDataGrid()
         {
             clear_ = true;
-            MyData.Clear();
+            is_getlocalvalues_executed = true;
+            for (int i=0; i<MyData.Count; i++)
+            {
+                MyData[i].Selected = false;
+            }
+
             if (GetLocalValues() == true)
                 Grid.ItemsSource = MyData;
             clear_ = false;
@@ -304,6 +313,7 @@ namespace GeometryDebuggingWindow
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             clear_ = true;
+            is_getlocalvalues_executed = false;
             MyData.Clear();
             Grid.ItemsSource = MyData;
             clear_ = false;

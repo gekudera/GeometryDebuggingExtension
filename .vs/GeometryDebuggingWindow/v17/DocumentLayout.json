@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9D9E2F3E-5B05-43BA-8683-4F64CFDE806A}|GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj|D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\geometrydebuggingwindow\\geometrydebuggingcontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9D9E2F3E-5B05-43BA-8683-4F64CFDE806A}|GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj|d:\\logos work\\geometrydebuggingwindow_copy\\geometrydebuggingextension\\geometrydebuggingwindow\\geometrydebuggingcontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9D9E2F3E-5B05-43BA-8683-4F64CFDE806A}|GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj|solutionrelative:geometrydebuggingwindow\\geometrydebuggingcontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9D9E2F3E-5B05-43BA-8683-4F64CFDE806A}|GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj|d:\\logos work\\geometrydebuggingwindow_copy\\geometrydebuggingextension\\geometrydebuggingwindow\\sharedmemory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9D9E2F3E-5B05-43BA-8683-4F64CFDE806A}|GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj|solutionrelative:geometrydebuggingwindow\\sharedmemory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9D9E2F3E-5B05-43BA-8683-4F64CFDE806A}|GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj|D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\geometrydebuggingwindow\\geometrydebuggingcontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{9D9E2F3E-5B05-43BA-8683-4F64CFDE806A}|GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj|solutionrelative:geometrydebuggingwindow\\geometrydebuggingcontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D9E2F3E-5B05-43BA-8683-4F64CFDE806A}|GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj|D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\geometrydebuggingwindow\\sharedmemory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D9E2F3E-5B05-43BA-8683-4F64CFDE806A}|GeometryDebuggingWindow\\GeometryDebuggingWindow.csproj|solutionrelative:geometrydebuggingwindow\\sharedmemory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82A4D073-610E-47FF-B876-65768FDD66A2}|GeomViewShell\\GeomViewShell.vcxproj|D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeomViewShell\\ShellFunctions.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{82A4D073-610E-47FF-B876-65768FDD66A2}|GeomViewShell\\GeomViewShell.vcxproj|solutionrelative:GeomViewShell\\ShellFunctions.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,29 +26,33 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
               "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{c768f294-60a3-4724-8d19-f8fe15fb530c}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "SharedMemory.cs",
               "DocumentMoniker": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeometryDebuggingWindow\\SharedMemory.cs",
               "RelativeDocumentMoniker": "GeometryDebuggingWindow\\SharedMemory.cs",
               "ToolTip": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeometryDebuggingWindow\\SharedMemory.cs",
               "RelativeToolTip": "GeometryDebuggingWindow\\SharedMemory.cs",
-              "ViewState": "AQIAADAAAAAAAAAAAAAowDgAAABHAAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABAAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-28T20:06:53.851Z",
               "EditorCaption": ""
@@ -57,21 +65,35 @@
               "RelativeDocumentMoniker": "GeometryDebuggingWindow\\GeometryDebuggingControl.xaml.cs",
               "ToolTip": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeometryDebuggingWindow\\GeometryDebuggingControl.xaml.cs",
               "RelativeToolTip": "GeometryDebuggingWindow\\GeometryDebuggingControl.xaml.cs",
-              "ViewState": "AQIAAHEAAAAAAAAAAAAqwIAAAAARAAAA",
+              "ViewState": "AQIAAM4AAAAAAAAAAAAAAN8AAACJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-28T20:06:54.614Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "GeometryDebuggingControl.xaml",
               "DocumentMoniker": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeometryDebuggingWindow\\GeometryDebuggingControl.xaml",
               "RelativeDocumentMoniker": "GeometryDebuggingWindow\\GeometryDebuggingControl.xaml",
               "ToolTip": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeometryDebuggingWindow\\GeometryDebuggingControl.xaml",
               "RelativeToolTip": "GeometryDebuggingWindow\\GeometryDebuggingControl.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-03-28T20:06:54.627Z"
+              "WhenOpened": "2024-03-28T20:06:54.627Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ShellFunctions.cpp",
+              "DocumentMoniker": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeomViewShell\\ShellFunctions.cpp",
+              "RelativeDocumentMoniker": "GeomViewShell\\ShellFunctions.cpp",
+              "ToolTip": "D:\\LOGOS work\\GeometryDebuggingWindow_copy\\GeometryDebuggingExtension\\GeomViewShell\\ShellFunctions.cpp",
+              "RelativeToolTip": "GeomViewShell\\ShellFunctions.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-08T13:27:24.639Z",
+              "EditorCaption": ""
             }
           ]
         }

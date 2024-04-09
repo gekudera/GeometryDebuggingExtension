@@ -54,7 +54,7 @@
             "Microsoft.VisualStudio.SDK": {
               "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "target": "Package",
-              "version": "[17.0.32112.339, )"
+              "version": "[17.9.37000, )"
             }
           }
         }
