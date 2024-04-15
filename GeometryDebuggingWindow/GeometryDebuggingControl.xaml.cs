@@ -20,6 +20,8 @@ using System.IO;
 using System.Reflection;
 using System.Linq.Expressions;
 using EnvDTE100;
+using System.Text.RegularExpressions;
+using System.Windows.Input;
 
 
 namespace GeometryDebuggingWindow
@@ -88,30 +90,30 @@ namespace GeometryDebuggingWindow
             string address = "";
 
             EnvDTE.Expressions expressions = sf.Locals;
-                foreach (EnvDTE.Expression exp in expressions)
-                {
-                
-                if (exp.IsValidValue)
-                    {
-                        if (exp.Type.Contains("*") && exp.Value.StartsWith("0x"))
-                        {
-                            address = exp.Value.Split(' ')[0];
-                        }
-                        else
-                        {
-                            var e = DTE.Debugger.GetExpression("&" + exp.Name);
-                            address = e.Value;
-                        }
+            foreach (EnvDTE.Expression exp in expressions)
+            {
 
-                        MyData.Add(new MySampleData
-                        {
-                            Name = exp.Name,
-                            Type = exp.Type,
-                            Address = address,
-                            Selected = false
-                        });
+                if (exp.IsValidValue)
+                {
+                    if (exp.Type.Contains("*") && exp.Value.StartsWith("0x"))
+                    {
+                        address = exp.Value.Split(' ')[0];
                     }
+                    else
+                    {
+                        var e = DTE.Debugger.GetExpression("&" + exp.Name);
+                        address = e.Value;
+                    }
+
+                    MyData.Add(new MySampleData
+                    {
+                        Name = exp.Name,
+                        Type = exp.Type,
+                        Address = address,
+                        Selected = false
+                    });
                 }
+            }
 
             return true;
         }
@@ -119,7 +121,7 @@ namespace GeometryDebuggingWindow
         private void OpenGeomViewWindow(string file_name)
         {
             int pos = file_name.LastIndexOf('t');
-            file_name = file_name.Substring(0, pos+1);
+            file_name = file_name.Substring(0, pos + 1);
             try
             {
                 if (!is_gv_inited)
@@ -160,7 +162,7 @@ namespace GeometryDebuggingWindow
             //Заморозить
             var currentThread = dte.Debugger.CurrentThread;
             currentThread.Freeze();
-            
+
             //континью
             dte.Debugger.Go(false);
 
@@ -182,7 +184,7 @@ namespace GeometryDebuggingWindow
                 MessageBox.Show("the process was break by closing window");
             }
 
-            OpenGeomViewWindow(file_name);   
+            OpenGeomViewWindow(file_name);
         }
 
         private void CloseEventHandler()
@@ -222,7 +224,7 @@ namespace GeometryDebuggingWindow
             clear_ = false;
             is_getlocalvalues_executed = false;
             dte = Microsoft.VisualStudio.Shell.Package.GetGlobalService(typeof(Microsoft.VisualStudio.Shell.Interop.SDTE)) as EnvDTE.DTE;
- 
+
             // Подписка на события 
             IsVisibleChanged += (a, b) => CloseEventHandler();
             debuggerEvents = dte.Events.DebuggerEvents;
@@ -249,7 +251,7 @@ namespace GeometryDebuggingWindow
             MySampleData item = new MySampleData();
             item.Name = textBox1.Text;
 
-            var exp = dte.Debugger.GetExpression("&"+item.Name);
+            var exp = dte.Debugger.GetExpression("&" + item.Name);
             item.Address = exp.Value;
             exp = dte.Debugger.GetExpression(item.Name);
             item.Type = exp.Type;
@@ -261,13 +263,16 @@ namespace GeometryDebuggingWindow
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            GoFullDrawProcess();
+            if (MyData.Count != 0)
+                GoFullDrawProcess();
+            else
+                MessageBox.Show("Selected list is empty!");
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
             if (!is_getlocalvalues_executed)
-             ReloadDataGrid();
+                ReloadDataGrid();
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -284,7 +289,7 @@ namespace GeometryDebuggingWindow
         {
             clear_ = true;
             is_getlocalvalues_executed = true;
-            for (int i=0; i<MyData.Count; i++)
+            for (int i = 0; i < MyData.Count; i++)
             {
                 MyData[i].Selected = false;
             }
@@ -301,7 +306,7 @@ namespace GeometryDebuggingWindow
 
         void OffChecked(object sender, RoutedEventArgs e)
         {
-             if (!clear_)
+            if (!clear_)
                 MyData[Grid.SelectedIndex].Selected = false;
         }
 
@@ -317,6 +322,20 @@ namespace GeometryDebuggingWindow
             MyData.Clear();
             Grid.ItemsSource = MyData;
             clear_ = false;
+        }
+
+        private void Grid_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            var grid = (DataGrid)sender;
+            if (Key.Delete == e.Key)
+            {
+                foreach (var row in grid.SelectedItems)
+                {
+                    MySampleData geom_obj = row as MySampleData;
+                    if (MyData.Contains(geom_obj))
+                        MyData.Remove(geom_obj);
+                }
+            }
         }
     }
 }
