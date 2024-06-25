@@ -34,7 +34,7 @@ If the build was successful, you can install this extension on your computer.
 # Install
 1. Go to GeometryDebuggingExtension\GeometryDebuggingWindow\bin\Release and find GeometryDebuggingWindow.vsix. Install this file with double click.  
 NOTE: you need to close VisualSludio IDE before installation.
-2. Follow the installation instructions.
+3. Follow the installation instructions.
 
 ![image](https://github.com/gekudera/GeometryDebuggingExtension/assets/67547100/a3a2df47-adf8-4204-9e28-9765b76545af)
 
