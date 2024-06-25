@@ -4,7 +4,7 @@ This tool is useful for debugging geometry tasks.
 
 # Dependencies
 The extension uses a specific vizualizer. Before installation you need to build and install this project:
-https://github.com/dafadey/geomView/tree/main 
+https://github.com/dafadey/geomView
 Only after successful installation of the visualizer can you proceed to the next steps.
 
 # Build
@@ -50,8 +50,15 @@ Extension installed successfully!
 ![screen5](https://github.com/gekudera/GeometryDebuggingExtension/assets/67547100/601b15cb-37e8-4851-951d-462d545e01c4)
 
 4. Add serialize function to your geometry class.
-NOTE: serialization functions always have a signature
-
+NOTE: serialization functions always have a signature:
 `void serialize(const GeometryClass* p, std::string name)`
 
-   
+# Starting to use
+To launch the extension window in VisualStudio IDE, you need to click View -> OtherWindows -> GeometryDebugging  
+Then the extension tool window will be open.
+
+![screen6](https://github.com/gekudera/GeometryDebuggingExtension/assets/67547100/10cd927d-3c30-4fe1-9c4f-81cd7f8ee01a)
+
+![screen7](https://github.com/gekudera/GeometryDebuggingExtension/assets/67547100/a4813172-d165-40d1-8030-b39b76877862)
+
+The extension is ready to use.
