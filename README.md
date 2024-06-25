@@ -50,7 +50,7 @@ Extension installed successfully!
 ![screen5](https://github.com/gekudera/GeometryDebuggingExtension/assets/67547100/601b15cb-37e8-4851-951d-462d545e01c4)
 
 4. Add serialize function to your geometry class.
-NOTE: serialization functions always have a signature:
+NOTE: serialization functions always have a signature:  
 `void serialize(const GeometryClass* p, std::string name)`
 
 # Starting to use
