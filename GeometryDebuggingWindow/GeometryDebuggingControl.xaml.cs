@@ -120,9 +120,6 @@ namespace GeometryDebuggingWindow
 
         private void OpenGeomViewWindow(string file_name)
         {
-            MessageBox.Show(file_name);
-            //int pos = file_name.LastIndexOf('t');
-            //file_name = file_name.Substring(0, pos+1);
             try
             {
                 if (!is_gv_inited)
