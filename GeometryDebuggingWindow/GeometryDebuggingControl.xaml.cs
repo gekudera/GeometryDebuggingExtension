@@ -120,13 +120,14 @@ namespace GeometryDebuggingWindow
 
         private void OpenGeomViewWindow(string file_name)
         {
-            int pos = file_name.LastIndexOf('t');
-            file_name = file_name.Substring(0, pos + 1);
+            MessageBox.Show(file_name);
+            //int pos = file_name.LastIndexOf('t');
+            //file_name = file_name.Substring(0, pos+1);
             try
             {
                 if (!is_gv_inited)
                 {
-                    MessageBox.Show(file_name);
+                    //MessageBox.Show(file_name);
                     is_gv_inited = true;
                     InitGeomView(file_name);
                 }
@@ -196,6 +197,12 @@ namespace GeometryDebuggingWindow
             }
             else
             {
+                clear_ = true;
+                is_getlocalvalues_executed = false;
+                MyData.Clear();
+                Grid.ItemsSource = MyData;
+                clear_ = false;
+
                 _autoDraw = false;
                 shmem.Dispose();
             }
@@ -261,10 +268,24 @@ namespace GeometryDebuggingWindow
             Grid.ItemsSource = MyData;
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void drawObjects_Click(object sender, RoutedEventArgs e)
         {
-            if (MyData.Count != 0)
-                GoFullDrawProcess();
+            string buffer = "";
+            bool is_selected = false;
+            foreach (MySampleData item in MyData)
+            {
+                if (item.Selected)
+                {
+                    buffer += item.Name + "|" + item.Type + "|" + item.Address + "|";
+                    is_selected = true;
+                }
+            }
+
+            if (is_selected)
+            {
+                shmem.WriteToMemory(buffer);
+                CreateDebuggingRemoteThread();
+            }
             else
                 MessageBox.Show("Selected list is empty!");
         }
