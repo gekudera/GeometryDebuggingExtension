@@ -54,7 +54,7 @@ NOTE: serialization functions always have a signature:
 `void serialize(const GeometryClass* p, std::string name)`
 
 # Starting to use
-See example code: https://github.com/gekudera/GeometryDebuggingExtension_example/tree/main
+See example code: https://github.com/gekudera/GeometryDebuggingExtension_example/tree/main  
 To launch the extension window in VisualStudio IDE, you need to click View -> OtherWindows -> GeometryDebugging  
 Then the extension tool window will be open.
 
