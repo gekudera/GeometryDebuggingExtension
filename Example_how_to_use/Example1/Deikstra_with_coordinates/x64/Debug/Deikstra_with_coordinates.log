@@ -1,0 +1,15 @@
+﻿  Graph.cpp
+D:\DIPLOM\Deikstra_with_coordinates\Deikstra_with_coordinates\Graph.cpp(13,17): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\DIPLOM\Deikstra_with_coordinates\Deikstra_with_coordinates\Graph.cpp(42,27): warning C4244: =: преобразование "double" в "_Ty", возможна потеря данных
+D:\DIPLOM\Deikstra_with_coordinates\Deikstra_with_coordinates\Graph.cpp(42,27): warning C4244:         with
+D:\DIPLOM\Deikstra_with_coordinates\Deikstra_with_coordinates\Graph.cpp(42,27): warning C4244:         [
+D:\DIPLOM\Deikstra_with_coordinates\Deikstra_with_coordinates\Graph.cpp(42,27): warning C4244:             _Ty=int
+D:\DIPLOM\Deikstra_with_coordinates\Deikstra_with_coordinates\Graph.cpp(42,27): warning C4244:         ]
+D:\DIPLOM\Deikstra_with_coordinates\Deikstra_with_coordinates\Graph.cpp(43,27): warning C4244: =: преобразование "double" в "_Ty", возможна потеря данных
+D:\DIPLOM\Deikstra_with_coordinates\Deikstra_with_coordinates\Graph.cpp(43,27): warning C4244:         with
+D:\DIPLOM\Deikstra_with_coordinates\Deikstra_with_coordinates\Graph.cpp(43,27): warning C4244:         [
+D:\DIPLOM\Deikstra_with_coordinates\Deikstra_with_coordinates\Graph.cpp(43,27): warning C4244:             _Ty=int
+D:\DIPLOM\Deikstra_with_coordinates\Deikstra_with_coordinates\Graph.cpp(43,27): warning C4244:         ]
+D:\DIPLOM\Deikstra_with_coordinates\Deikstra_with_coordinates\Graph.cpp(97,19): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+     Создается библиотека D:\DIPLOM\Deikstra_with_coordinates\x64\Debug\Deikstra_with_coordinates.lib и объект D:\DIPLOM\Deikstra_with_coordinates\x64\Debug\Deikstra_with_coordinates.exp
+  Deikstra_with_coordinates.vcxproj -> D:\DIPLOM\Deikstra_with_coordinates\x64\Debug\Deikstra_with_coordinates.exe
